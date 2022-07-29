@@ -75,6 +75,9 @@ cat logs/apache_*.access.log | awk -F\" '{print $6}' | sort | uniq -c | sort -nr
   
   
   
+ Solved WordPress Error – Download failed destination directory for streaming does not exist or is not writable
  
+ define('WP_TEMP_DIR', ABSPATH . '/../temp/');
+
   
 

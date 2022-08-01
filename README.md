@@ -79,5 +79,29 @@ cat logs/apache_*.access.log | awk -F\" '{print $6}' | sort | uniq -c | sort -nr
  
  define('WP_TEMP_DIR', ABSPATH . '/../temp/');
 
+  3.1. Enabling Automatic Updates Manually
+
+  define ('WP_AUTO_UPDATE_CORE', true);
+
+  Set the value to “false” to disable automatic updates.
+
+
+  To enable automatic updates for minor WordPress versions, add the following code to the wp-config.php file:
+  
+  define ('WP_AUTO_UPDATE_CORE', minor);
+
+  This function helps disable automatic updates for any major WordPress version.
+
+To enable automatic updates for your WordPress plugin or theme versions, add the following code to the auto_update_$type filter in the wp-admin folder of your WordPress installation:
+  
+  For plugins:
+
+add_filter('auto_update_plugin', '__return_true');
+
+  For themes:
+
+add_filter('auto_update_theme', '__return_true');
+
+  
   
 

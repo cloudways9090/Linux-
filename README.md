@@ -103,5 +103,21 @@ add_filter('auto_update_plugin', '__return_true');
 add_filter('auto_update_theme', '__return_true');
 
   
+  TroubleShoot High CPU Usage Commend 
+  
+  1) sudo apm 
+  2) sudo apm php -s dbname <inside application >
+  3) sudo apm mysql -s dbname 
+  4) sudo apm -s dbname traffic -l24h 
+  
+  Run commend insdie application )
+  
+  for A in $(ls -la | awk '{print $NF}'); do echo $A && awk '{print$1,$7}' $A/logs/apache_*.access.log | cut -d? -f1 | sort | uniq -c | sort -nr | head -n 5 | awk -F";" '{print $1}' ; done
+  
+ for A in $(ls | awk '{print $NF}'); do echo $A && /usr/local/sbin/apm traffic -s $A -l 1h; done
+for A in $(ls | awk '{print $NF}'); do echo $A && sudo /usr/local/sbin/apm mysql -s $A -l 1h; done
+for A in $(ls | awk '{print $NF}'); do echo $A &&  /usr/local/sbin/apm php -s $A -l 1h; done
+  
+  
   
 

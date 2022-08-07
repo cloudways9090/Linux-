@@ -114,9 +114,11 @@ add_filter('auto_update_theme', '__return_true');
   
   for A in $(ls -la | awk '{print $NF}'); do echo $A && awk '{print$1,$7}' $A/logs/apache_*.access.log | cut -d? -f1 | sort | uniq -c | sort -nr | head -n 5 | awk -F";" '{print $1}' ; done
   
- for A in $(ls | awk '{print $NF}'); do echo $A && /usr/local/sbin/apm traffic -s $A -l 1h; done
-for A in $(ls | awk '{print $NF}'); do echo $A && sudo /usr/local/sbin/apm mysql -s $A -l 1h; done
-for A in $(ls | awk '{print $NF}'); do echo $A &&  /usr/local/sbin/apm php -s $A -l 1h; done
+1)  for A in $(ls | awk '{print $NF}'); do echo $A && /usr/local/sbin/apm traffic -s $A -l 1h; done
+  
+2) for A in $(ls | awk '{print $NF}'); do echo $A && sudo /usr/local/sbin/apm mysql -s $A -l 1h; done
+  
+3) for A in $(ls | awk '{print $NF}'); do echo $A &&  /usr/local/sbin/apm php -s $A -l 1h; done
   
   
   

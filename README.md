@@ -119,6 +119,28 @@ add_filter('auto_update_theme', '__return_true');
 2) for A in $(ls | awk '{print $NF}'); do echo $A && sudo /usr/local/sbin/apm mysql -s $A -l 1h; done
   
 3) for A in $(ls | awk '{print $NF}'); do echo $A &&  /usr/local/sbin/apm php -s $A -l 1h; done
+
+                                               High CPU Case Issue 
+                                               
+1- Check graphs and HTOP to know whether CPU is still high or went high in past.
+
+2- Check Varnish, if it's working or not.
+
+3- Track traffic via APM or by running curl https://raw.githubusercontent.com/ahmedeasypeasy/New-Cpu/main/Cpu.sh | bash  in /home/master
+
+4- If you find higher rate Google bot crawling, tell the customer to add crawl delay via robots.txt max of 2secs
+
+5- If wp-cron is being called in huge number, disable it via WordPress config and enable it via server using wp cli approach.
+
+6- if there are IPs accessing application mostly, so check first if it's server ip or not. If not then use abuseipdb.com to verify if it's attackers IP or not.
+
+7- If MySQL is consuming high CPU, so check the query.
+8- If nothing is appearing, check TTFB of server by creating phpinfo in any of application and check firstbyte against it. It shouldn't be more than 300ms.
+
+9- Also check if there is any slow plugin other than elementor|wocommerce.
+
+Mostly plugins consume high CPU where they call external URL, function would be LIKE wp_remote_get().
+Follow above approach in every high CPU usage case and let me know if you find anything different than above
   
   
   

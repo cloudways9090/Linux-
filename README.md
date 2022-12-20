@@ -143,5 +143,21 @@ Mostly plugins consume high CPU where they call external URL, function would be 
 Follow above approach in every high CPU usage case and let me know if you find anything different than above
   
   
+  Default index.php files 
   
+  <?php
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define( 'WP_USE_THEMES', true );
+/** Loads the WordPress Environment and Template */
+require __DIR__ . '/wp-blog-header.php';
 

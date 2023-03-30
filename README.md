@@ -161,3 +161,17 @@ define( 'WP_USE_THEMES', true );
 /** Loads the WordPress Environment and Template */
 require __DIR__ . '/wp-blog-header.php';
 
+
+2) Then use root-user to update the plugin:
+wp plugin update elementor-pro --allow-root
+(make sure to reset the permissions as per the permissions set on other files in that directory)
+
+3) If site is still redirecting, then check site URL and home URL
+wp option get siteurl
+wp option get home
+
+(Only update the one that is not correct)
+wp option update siteurl 'http://example.com'
+wp option update home 'http://example.com'
+
+
